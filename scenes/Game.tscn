@@ -109,14 +109,14 @@ dialog_text = "Do you want to quit to main menu?"
 dialog_autowrap = true
 cancel_button_text = "No"
 
+[node name="BallDispenser" parent="." instance=ExtResource("10_m8o5d")]
+
 [node name="LeftHand" parent="." instance=ExtResource("8_ocxmb")]
 position = Vector2(233, 522)
 
 [node name="RightHand" parent="." instance=ExtResource("8_ocxmb")]
 position = Vector2(819, 504)
 right = true
-
-[node name="BallDispenser" parent="." instance=ExtResource("10_m8o5d")]
 
 [node name="World" type="StaticBody2D" parent="."]
 collision_layer = 2

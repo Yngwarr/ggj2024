@@ -15,7 +15,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ball:frame")
+tracks/0/path = NodePath("View:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +32,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ball:frame")
+tracks/0/path = NodePath("View:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,8 +55,7 @@ mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_vixha")
 script = ExtResource("1_2u6bb")
 
-[node name="Ball" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 0, 1)
+[node name="View" type="Sprite2D" parent="."]
 texture = ExtResource("1_fx65q")
 hframes = 3
 

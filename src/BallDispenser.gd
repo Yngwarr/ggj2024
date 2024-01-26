@@ -5,6 +5,7 @@ extends Node2D
 @export var ball_scene: PackedScene
 
 var free_layers := 0b1111_1111_1111_1111
+var colors := [Color.RED, Color.GREEN, Color.BLUE, Color.TAN, Color.CYAN, Color.MAGENTA, Color.GOLD]
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
@@ -32,6 +33,7 @@ func spawn_ball() -> void:
 	ball.set_collision_layer_value(layer + 8, true)
 	free_layers = set_bit(free_layers, layer - 1, false)
 	add_child(ball)
+	ball.set_color(colors.pick_random())
 
 func get_layer(layers: int) -> int:
 	var layer: int = 0
