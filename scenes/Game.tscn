@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=17 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="Script" path="res://src/UI/PauseMenu.gd" id="2_xdcds"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="PackedScene" uid="uid://vcrchvmfujot" path="res://scenes/Hand.tscn" id="8_ocxmb"]
+[ext_resource type="PackedScene" path="res://scenes/CharacterBody.tscn" id="10_ffd2t"]
 [ext_resource type="PackedScene" uid="uid://dxkfdovksh2kd" path="res://scenes/BallDispenser.tscn" id="10_m8o5d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v63bu"]
@@ -108,6 +109,8 @@ ok_button_text = "Yes"
 dialog_text = "Do you want to quit to main menu?"
 dialog_autowrap = true
 cancel_button_text = "No"
+
+[node name="Clown" parent="." instance=ExtResource("10_ffd2t")]
 
 [node name="BallDispenser" parent="." instance=ExtResource("10_m8o5d")]
 
