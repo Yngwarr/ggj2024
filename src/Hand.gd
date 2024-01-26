@@ -1,7 +1,7 @@
 class_name Hand
 extends CharacterBody2D
 
-const INPUT_MULT := 10.0
+const INPUT_MULT := 20.0
 
 @export var right := false
 
@@ -29,13 +29,12 @@ func _ready() -> void:
 
 		bounce_rotation *= -1
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	input = get_mouse_input() if right else get_keyboard_input()
 
-func _physics_process(_delta: float) -> void:
 	var collision := move_and_collide(input * INPUT_MULT)
-	if collision:
-		velocity = velocity.slide(collision.get_normal())
+	# if collision:
+	# 	velocity = velocity.slide(collision.get_normal())
 
 	if Input.is_action_just_pressed(input_bounce):
 		var tween := create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
