@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://vcrchvmfujot"]
+
+[ext_resource type="Script" path="res://src/Hand.gd" id="1_1by5j"]
+[ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="1_qcwo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf4bq"]
+size = Vector2(256, 102)
+
+[node name="Hand" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_1by5j")
+
+[node name="View" type="Sprite2D" parent="."]
+scale = Vector2(2, 0.8)
+texture = ExtResource("1_qcwo2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qf4bq")
