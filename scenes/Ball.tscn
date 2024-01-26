@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://cshwhdk5364ln"]
+
+[ext_resource type="Texture2D" uid="uid://susd6x35887l" path="res://img/ball.png" id="1_fx65q"]
+[ext_resource type="Texture2D" uid="uid://dofkvmldfnb8y" path="res://img/flare.png" id="2_imjxx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_452yx"]
+radius = 48.0
+
+[sub_resource type="Animation" id="Animation_1m256"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_kejwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmjci"]
+_data = {
+"RESET": SubResource("Animation_kejwb"),
+"idle": SubResource("Animation_1m256")
+}
+
+[node name="Ball" type="RigidBody2D"]
+
+[node name="Ball" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("1_fx65q")
+hframes = 3
+
+[node name="Flare" type="Sprite2D" parent="."]
+position = Vector2(-17, -14)
+texture = ExtResource("2_imjxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_452yx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cmjci")
+}
