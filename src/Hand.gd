@@ -29,12 +29,20 @@ func _ready() -> void:
 
 		bounce_rotation *= -1
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	input = get_mouse_input() if right else get_keyboard_input()
 
+	if name == "RightHand":
+		print("velocity ", velocity)
+
 	var collision := move_and_collide(input * INPUT_MULT)
-	# if collision:
-	# 	velocity = velocity.slide(collision.get_normal())
+	if collision:
+		# velocity = velocity.slide(collision.get_normal())
+		var norm := collision.get_normal()
+		var other := collision.get_collider()
+		if other.is_in_group(&"ball"):
+			other.apply_force(norm * -30000)
+
 
 	if Input.is_action_just_pressed(input_bounce):
 		var tween := create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
