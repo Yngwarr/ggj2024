@@ -1,7 +1,7 @@
 class_name Hand
 extends CharacterBody2D
 
-const INPUT_MULT := 3.0
+const INPUT_MULT := 5.0
 
 var input: Vector2
 
