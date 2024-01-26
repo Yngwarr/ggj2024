@@ -56,7 +56,7 @@ func get_keyboard_input() -> Vector2:
 func get_mouse_input() -> Vector2:
 	var direction = get_global_mouse_position() - global_position
 
-	if direction.length() < 5 * INPUT_MULT:
+	if direction.length() < INPUT_MULT:
 		return Vector2.ZERO
 
 	return direction.normalized()

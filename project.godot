@@ -92,6 +92,19 @@ game_rd={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="hands"
+2d_physics/layer_2="world"
+2d_physics/layer_9="ball_1"
+2d_physics/layer_10="ball_2"
+2d_physics/layer_11="ball_3"
+2d_physics/layer_12="ball_4"
+2d_physics/layer_13="ball_5"
+2d_physics/layer_14="ball_6"
+2d_physics/layer_15="ball_7"
+2d_physics/layer_16="ball_8"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
