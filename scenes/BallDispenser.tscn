@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxkfdovksh2kd"]
+
+[ext_resource type="Script" path="res://src/BallDispenser.gd" id="1_kvlig"]
+[ext_resource type="PackedScene" uid="uid://cshwhdk5364ln" path="res://scenes/Ball.tscn" id="2_k78r5"]
+
+[node name="BallDispenser" type="Node2D" node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_kvlig")
+spawn_points = [NodePath("SpawnLeft"), NodePath("SpawnMiddle"), NodePath("SpawnRight")]
+ball_scene = ExtResource("2_k78r5")
+
+[node name="SpawnLeft" type="Marker2D" parent="."]
+position = Vector2(123, -85)
+
+[node name="SpawnMiddle" type="Marker2D" parent="."]
+position = Vector2(564, -84)
+
+[node name="SpawnRight" type="Marker2D" parent="."]
+position = Vector2(1024, -77)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0

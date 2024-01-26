@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="PackedScene" uid="uid://vcrchvmfujot" path="res://scenes/Hand.tscn" id="8_ocxmb"]
-[ext_resource type="PackedScene" uid="uid://cshwhdk5364ln" path="res://scenes/Ball.tscn" id="9_mvlsl"]
+[ext_resource type="PackedScene" uid="uid://dxkfdovksh2kd" path="res://scenes/BallDispenser.tscn" id="10_m8o5d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v63bu"]
 shader = ExtResource("3_tg1ur")
@@ -23,7 +23,7 @@ font_size = 52
 bounce = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s7ega"]
-distance = -864.0
+distance = -1024.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kfbah"]
 normal = Vector2(1, 0)
@@ -116,8 +116,7 @@ position = Vector2(233, 522)
 position = Vector2(819, 504)
 right = true
 
-[node name="Ball" parent="." instance=ExtResource("9_mvlsl")]
-position = Vector2(148, 61)
+[node name="BallDispenser" parent="." instance=ExtResource("10_m8o5d")]
 
 [node name="World" type="StaticBody2D" parent="."]
 collision_layer = 2
