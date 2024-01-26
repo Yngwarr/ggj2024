@@ -50,6 +50,7 @@ _data = {
 [node name="Ball" type="RigidBody2D" groups=["ball"]]
 collision_layer = 256
 collision_mask = 3
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_vixha")
 
 [node name="Ball" type="Sprite2D" parent="."]
