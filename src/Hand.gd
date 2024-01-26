@@ -8,18 +8,31 @@ const INPUT_MULT := 5.0
 var input: Vector2
 var bounce_rotation: float = 50
 
+var input_left := &"game_ll"
+var input_right := &"game_lr"
+var input_up := &"game_lu"
+var input_down := &"game_ld"
+var input_bounce := &"game_lbounce"
+
 func _ready() -> void:
 	if right:
+		input_left = &"game_rl"
+		input_right = &"game_rr"
+		input_up = &"game_ru"
+		input_down = &"game_rd"
+		input_bounce = &"game_rbounce"
+
 		$View.scale.x *= -1
 		$Collider.scale.x *= -1
 		$View.position.x *= -1
 		$Collider.position.x *= -1
+
 		bounce_rotation *= -1
 
 func _process(_delta: float) -> void:
 	input = Vector2(
-		Input.get_axis("game_ll", "game_lr"),
-		Input.get_axis("game_lu", "game_ld")
+		Input.get_axis(input_left, input_right),
+		Input.get_axis(input_up, input_down)
 	).normalized()
 
 func _physics_process(_delta: float) -> void:
@@ -30,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 	if name == "RightHand":
 		print("rotation ", rotation_degrees)
 
-	if Input.is_action_just_pressed("game_lbounce"):
+	if Input.is_action_just_pressed(input_bounce):
 		var tween := create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self, "rotation_degrees", bounce_rotation, .3) \
 			.set_trans(Tween.TRANS_CUBIC) \
