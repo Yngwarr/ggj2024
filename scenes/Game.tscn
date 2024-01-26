@@ -23,7 +23,7 @@ font_size = 52
 bounce = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s7ega"]
-distance = -648.0
+distance = -864.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kfbah"]
 normal = Vector2(1, 0)

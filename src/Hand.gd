@@ -6,7 +6,7 @@ const INPUT_MULT := 10.0
 @export var right := false
 
 var input: Vector2
-var bounce_rotation: float = 50
+var bounce_rotation: float = 40
 
 var input_left := &"game_ll"
 var input_right := &"game_lr"
