@@ -4,6 +4,9 @@ extends Node2D
 ## where your dreams come true! Adjust to your likings and may the code be with
 ## you.
 
+const VICTORY: int = 17
+const FAILURE: int = -10
+
 ## Must have [code]process_mode == PROCESS_MODE_WHEN_PAUSED[/code].
 @export var pause_screen: CanvasLayer
 @export var crowd_progress: CrowdProgress
@@ -11,12 +14,6 @@ extends Node2D
 @onready var clown: Clown = $Clown
 @onready var ball_dispenser: BallDispenser = $BallDispenser
 
-#  5  victory
-#  3  happy
-#  1  smile
-#  0  neutral
-# -5  angry
-# -10 game over
 var happiness: int = 0
 
 func _ready() -> void:
@@ -26,11 +23,16 @@ func _ready() -> void:
 	ball_dispenser.level_up.connect(increase_happiness)
 	ball_dispenser.ball_dropped.connect(decrease_happiness)
 
-func increase_happiness() -> void:
-	happiness += 1
+	crowd_progress.set_value(happiness)
+	crowd_progress.set_bounds(FAILURE, VICTORY)
+
+func increase_happiness(_level: int) -> void:
+	happiness += 5
+	crowd_progress.set_value(happiness)
 
 func decrease_happiness() -> void:
 	happiness -= 1
+	crowd_progress.set_value(happiness)
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("game_pause"):

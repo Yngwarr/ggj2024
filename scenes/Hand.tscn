@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8q8xn67q0nnl" path="res://img/hand.png" id="2_2h120"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ywexr"]
-radius = 112.04
+radius = 130.311
 
 [node name="Hand" type="CharacterBody2D"]
 collision_mask = 65283

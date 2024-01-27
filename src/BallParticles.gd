@@ -1,7 +1,7 @@
 class_name BallParticles
 extends Node2D
 
-const SUPER_THRESHOLD = 4
+const SUPER_THRESHOLD = 2
 
 @onready var combo_stars: GPUParticles2D = $ComboStars
 @onready var super_stars: GPUParticles2D = $SuperStars

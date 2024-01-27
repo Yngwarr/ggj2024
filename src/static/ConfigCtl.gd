@@ -30,7 +30,6 @@ static func load_config() -> void:
 				clamp(value, SoundCtl.MIN_VOLUME, SoundCtl.MAX_VOLUME))
 
 	Global.coulrophobia_mode = config.get_value(GAMEPLAY_SECTION, COULROPHOBIA, false)
-	print("config loaded ", Global.coulrophobia_mode)
 
 ## Actualizes values and stores them in the global config file. Opens a file if
 ## [code]config[/code] not provided.
@@ -45,7 +44,6 @@ static func update_config(config: ConfigFile = null) -> void:
 			AudioServer.get_bus_name(bus),\
 			AudioServer.get_bus_volume_db(bus))
 
-	print("saving ", Global.coulrophobia_mode)
 	config.set_value(GAMEPLAY_SECTION, COULROPHOBIA, Global.coulrophobia_mode)
 
 	config.save(CONFIG_FILE)

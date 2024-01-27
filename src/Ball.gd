@@ -28,23 +28,20 @@ func touched_by(hand: Hand) -> void:
 	var touch: Touch = Touch.RIGHT if hand.right else Touch.LEFT
 	if last_touch == Touch.NONE:
 		first_touch = touch
-		combo = 1
+		inc_combo()
 	elif touch != last_touch:
 		if first_touch == touch:
 			inc_combo()
 	else:
 		reset_combo(touch)
 	last_touch = touch
-	# print(hand.name, " touched ", name)
 
 func inc_combo() -> void:
 	combo += 1
-	print("combo ", combo)
 	particles.set_combo(combo)
 	combo_increased.emit(combo)
 
 func reset_combo(touch: Touch) -> void:
-	print("reset ", "right" if touch == Touch.RIGHT else "left")
 	first_touch = touch
 	combo = 1
 	particles.set_combo(combo)
