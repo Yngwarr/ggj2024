@@ -1,1 +1,2 @@
 clown_hair.png,519,315,8
+regular_hair.png,519,283,8
