@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx1hhd0hgy386"]
+[gd_scene load_steps=6 format=3 uid="uid://burxcmip5dg8l"]
 
 [ext_resource type="Texture2D" uid="uid://dxjf63mb8cl4o" path="res://img/progress_base.png" id="1_27nq6"]
 [ext_resource type="Texture2D" uid="uid://du20o1qx5sm2v" path="res://img/progress_over.png" id="2_f7enr"]
 [ext_resource type="Texture2D" uid="uid://bajddvfry0bp3" path="res://img/progress_fill.png" id="2_sh8mw"]
+[ext_resource type="Script" path="res://src/Emoji.gd" id="5_2obyo"]
 [ext_resource type="Texture2D" uid="uid://d0se2gtoxvjvu" path="res://img/progress_happy.png" id="5_emefk"]
-[ext_resource type="Script" path="res://scenes/Emoji.gd" id="6_cj0bx"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -33,4 +33,4 @@ texture_progress_offset = Vector2(0, -10)
 [node name="Emoji" type="Sprite2D" parent="."]
 position = Vector2(82, 171)
 texture = ExtResource("5_emefk")
-script = ExtResource("6_cj0bx")
+script = ExtResource("5_2obyo")

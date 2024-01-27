@@ -3,7 +3,7 @@ extends Node2D
 
 # the limit is 16
 # const MAX_BALLS = 4
-const MAX_BALLS = 1
+const MAX_BALLS = 8
 
 @export var spawn_points: Array[Marker2D]
 @export var ball_scene: PackedScene
@@ -11,6 +11,8 @@ const MAX_BALLS = 1
 
 var free_layers := 0b1111_1111_1111_1111
 var colors := [Color.RED, Color.GREEN, Color.BLUE, Color.TAN, Color.CYAN, Color.MAGENTA, Color.GOLD]
+var current_level := 1
+var balls_in_air := 0
 
 @onready var spawn_timer: Timer = $SpawnTimer
 
@@ -34,8 +36,12 @@ func ball_fell(ball: Node2D) -> void:
 	var layer := get_ball_collision_layer(ball)
 	free_layers = set_bit(free_layers, layer - 1, true)
 	ball.queue_free()
+	balls_in_air -= 1
 
 func spawn_ball() -> void:
+	if balls_in_air == current_level:
+		return
+
 	var layer := get_free_layer(free_layers, MAX_BALLS)
 
 	if layer == -1:
@@ -47,8 +53,13 @@ func spawn_ball() -> void:
 	ball.position = point.position
 	ball.set_collision_layer_value(layer + 8, true)
 	free_layers = set_bit(free_layers, layer - 1, false)
+
 	add_child(ball)
+
+	ball.combo_increased.connect(combo_increased)
+	ball.combo_reset.connect(combo_reset)
 	ball.set_color(colors.pick_random())
+	balls_in_air += 1
 
 func get_free_layer(layers: int, max_balls: int) -> int:
 	var layer: int = 0
@@ -71,6 +82,18 @@ func get_ball_collision_layer(ball: CollisionObject2D) -> int:
 
 func set_bit(data: int, pos: int, value: bool) -> int:
 	return data | (1 << pos) if value else data & ~(1 << pos)
+
+func combo_increased(combo: int) -> void:
+	if combo == 3:
+		next_level()
+
+func combo_reset() -> void:
+	pass
+
+func next_level() -> void:
+	current_level += 1
+	spawn_ball()
+	print("level up! ", current_level)
 
 func test_get_free_layer() -> void:
 	Test.are_eq(get_free_layer(0b1111_1111_1111_1111, 16), 1)

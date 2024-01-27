@@ -1,7 +1,7 @@
 class_name Ball
 extends RigidBody2D
 
-signal combo_increased
+signal combo_increased(level: int)
 signal combo_reset
 
 @onready var view: Node2D = $View
@@ -38,7 +38,7 @@ func touched_by(hand: Hand) -> void:
 func inc_combo() -> void:
 	combo += 1
 	print("combo ", combo)
-	combo_increased.emit()
+	combo_increased.emit(combo)
 
 func reset_combo(touch: Touch) -> void:
 	print("reset ", "right" if touch == Touch.RIGHT else "left")
