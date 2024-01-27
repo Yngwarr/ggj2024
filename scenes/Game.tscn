@@ -256,7 +256,7 @@ container = NodePath("../../PauseMenu/OptionsWindow/VBoxContainer/SoundLevels/Co
 [node name="ConfirmQuit" type="ConfirmationDialog" parent="FailureScreen"]
 title = ""
 position = Vector2i(426, 284)
-size = Vector2i(289, 105)
+size = Vector2i(289, 120)
 unresizable = true
 popup_window = true
 ok_button_text = "Yes"
