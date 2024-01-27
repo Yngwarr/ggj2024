@@ -6,14 +6,31 @@ extends Node2D
 
 ## Must have [code]process_mode == PROCESS_MODE_WHEN_PAUSED[/code].
 @export var pause_screen: CanvasLayer
+@export var crowd_progress: CrowdProgress
 
 @onready var clown: Clown = $Clown
 @onready var ball_dispenser: BallDispenser = $BallDispenser
+
+#  5  victory
+#  3  happy
+#  1  smile
+#  0  neutral
+# -5  angry
+# -10 game over
+var happiness: int = 0
 
 func _ready() -> void:
 	ball_dispenser.ball_dropped.connect(clown.become_sad)
 	ball_dispenser.ball_spawned.connect(clown.concentrate)
 	ball_dispenser.level_up.connect(clown.become_happy)
+	ball_dispenser.level_up.connect(increase_happiness)
+	ball_dispenser.ball_dropped.connect(decrease_happiness)
+
+func increase_happiness() -> void:
+	happiness += 1
+
+func decrease_happiness() -> void:
+	happiness -= 1
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("game_pause"):

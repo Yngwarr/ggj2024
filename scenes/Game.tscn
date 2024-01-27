@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=19 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
+[ext_resource type="PackedScene" uid="uid://burxcmip5dg8l" path="res://scenes/Progress.tscn" id="2_mm0vn"]
 [ext_resource type="Script" path="res://src/UI/PauseMenu.gd" id="2_xdcds"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="3_j5m3f"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_tg1ur"]
@@ -36,11 +37,15 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 distance = -1152.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("pause_screen")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("pause_screen", "crowd_progress")]
 script = ExtResource("1_wmfvw")
 pause_screen = NodePath("PauseMenu")
+crowd_progress = NodePath("HUD/CrowdProgress")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="CrowdProgress" parent="HUD" instance=ExtResource("2_mm0vn")]
 
 [node name="PauseMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("resume_button", "options_menu")]
 process_mode = 2

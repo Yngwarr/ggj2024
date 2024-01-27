@@ -90,7 +90,7 @@ func set_bit(data: int, pos: int, value: bool) -> int:
 	return data | (1 << pos) if value else data & ~(1 << pos)
 
 func combo_increased(combo: int) -> void:
-	if combo == 3:
+	if combo == 5:
 		next_level()
 
 func combo_reset() -> void:

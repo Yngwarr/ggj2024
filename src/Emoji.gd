@@ -1,9 +1,17 @@
 extends Sprite2D
 
+@export var happy: Texture
+@export var smile: Texture
+@export var neutral: Texture
+@export var angry: Texture
 
-# Called when the node enters the scene tree for the first time.
+enum CrowdMood { NEUTRAL, SMILE, HAPPY, ANGRY }
+
 func _ready():
-	pass # Replace with function body.
+	pass
+
+func set_mood():
+	pass
 
 #if progress >=6 then textureName="progress_happy"
 #if progress >=3 and progress <=5 then textureName="progress_smile"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://burxcmip5dg8l"]
+[gd_scene load_steps=7 format=3 uid="uid://burxcmip5dg8l"]
 
 [ext_resource type="Texture2D" uid="uid://dxjf63mb8cl4o" path="res://img/progress_base.png" id="1_27nq6"]
+[ext_resource type="Script" path="res://src/CrowdProgress.gd" id="1_uiglw"]
 [ext_resource type="Texture2D" uid="uid://du20o1qx5sm2v" path="res://img/progress_over.png" id="2_f7enr"]
 [ext_resource type="Texture2D" uid="uid://bajddvfry0bp3" path="res://img/progress_fill.png" id="2_sh8mw"]
 [ext_resource type="Script" path="res://src/Emoji.gd" id="5_2obyo"]
@@ -13,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uiglw")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
@@ -20,8 +22,8 @@ offset_left = 46.0
 offset_top = 155.0
 offset_right = 115.0
 offset_bottom = 542.0
-max_value = 8.0
-value = 5.0
+min_value = -10.0
+max_value = 7.0
 fill_mode = 3
 nine_patch_stretch = true
 stretch_margin_bottom = 10
