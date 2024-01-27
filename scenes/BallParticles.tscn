@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://becu2dqld5voq"]
+[gd_scene load_steps=10 format=3 uid="uid://qrwd3x5s5jke"]
 
+[ext_resource type="Script" path="res://src/BallParticles.gd" id="1_4ay4m"]
 [ext_resource type="Texture2D" uid="uid://dsd33qk04gcqa" path="res://img/particle/ps_1.png" id="1_snw3v"]
 [ext_resource type="Texture2D" uid="uid://cg81orrvq0xxq" path="res://img/particle/ps_3.png" id="2_jfhmt"]
 [ext_resource type="Texture2D" uid="uid://b11g0gwyhw87p" path="res://img/particle/ps_2.png" id="2_u6g36"]
@@ -51,8 +52,9 @@ radial_velocity_max = 10.0
 scale_min = 0.8
 
 [node name="Particles" type="Node2D"]
+script = ExtResource("1_4ay4m")
 
-[node name="SuperStar" type="GPUParticles2D" parent="."]
+[node name="SuperStars" type="GPUParticles2D" parent="."]
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_6er03")
 texture = ExtResource("1_snw3v")
@@ -61,7 +63,7 @@ speed_scale = 3.0
 explosiveness = 0.2
 
 [node name="ComboStars" type="GPUParticles2D" parent="."]
-amount = 4
+amount = 1
 process_material = SubResource("ParticleProcessMaterial_dbvqt")
 texture = ExtResource("1_snw3v")
 lifetime = 2.0

@@ -6,6 +6,7 @@ signal combo_reset
 
 @onready var view: Node2D = $View
 @onready var flare: Node2D = $Flare
+@onready var particles: BallParticles = $Particles
 
 enum Touch { NONE, LEFT, RIGHT }
 
@@ -14,6 +15,7 @@ var last_touch: Touch = Touch.NONE
 var first_touch: Touch = Touch.NONE
 
 func _ready() -> void:
+	particles.set_combo(combo)
 	$AnimationPlayer.play(&"idle")
 
 func _physics_process(_delta: float) -> void:
@@ -38,10 +40,12 @@ func touched_by(hand: Hand) -> void:
 func inc_combo() -> void:
 	combo += 1
 	print("combo ", combo)
+	particles.set_combo(combo)
 	combo_increased.emit(combo)
 
 func reset_combo(touch: Touch) -> void:
 	print("reset ", "right" if touch == Touch.RIGHT else "left")
 	first_touch = touch
 	combo = 1
+	particles.set_combo(combo)
 	combo_reset.emit()
