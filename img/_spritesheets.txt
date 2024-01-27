@@ -1,4 +1,0 @@
-clown_hair.png,519,315,8
-regular_hair.png,519,283,8
-ball.png,110,110,3
-header.png,730,252,3

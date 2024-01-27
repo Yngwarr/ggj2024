@@ -1,3 +1,0 @@
-cool.png,191,81,2
-great.png,280,131,2
-amazing.png,307,126,2
