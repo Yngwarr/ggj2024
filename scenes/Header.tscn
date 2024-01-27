@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjhwc05n0b81a"]
 
-[ext_resource type="Texture2D" uid="uid://ij3d1rf08o1i" path="res://img/header.png" id="1_np8y7"]
+[ext_resource type="Texture2D" uid="uid://y3os2f2wp16n" path="res://img/text/header.png" id="1_b21xi"]
 
 [sub_resource type="Animation" id="Animation_6gbwr"]
 resource_name = "Header"
@@ -42,7 +42,7 @@ _data = {
 
 [node name="Header" type="Sprite2D"]
 position = Vector2(601, 258)
-texture = ExtResource("1_np8y7")
+texture = ExtResource("1_b21xi")
 hframes = 2
 vframes = 2
 
