@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqbryi634b3tu"]
+
+[ext_resource type="Texture2D" uid="uid://dsd33qk04gcqa" path="res://img/particle/ps_1.png" id="1_o2nqp"]
+
+[sub_resource type="Curve" id="Curve_rdeu3"]
+_data = [Vector2(0.00355873, 1), 0.0, 0.0219084, 0, 0, Vector2(1, 0.367925), -2.07777, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_gtbxb"]
+curve = SubResource("Curve_rdeu3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qoql1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 60.0
+spread = 180.0
+initial_velocity_max = 200.0
+angular_velocity_min = 360.0
+angular_velocity_max = 360.0
+linear_accel_max = 60.0
+scale_curve = SubResource("CurveTexture_gtbxb")
+
+[node name="BallBurst" type="Node2D"]
+
+[node name="BurstParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 256
+process_material = SubResource("ParticleProcessMaterial_qoql1")
+texture = ExtResource("1_o2nqp")
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
