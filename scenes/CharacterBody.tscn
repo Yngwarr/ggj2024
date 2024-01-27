@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://e6mmeahx7whx"]
+[gd_scene load_steps=12 format=3 uid="uid://e6mmeahx7whx"]
 
 [ext_resource type="Texture2D" uid="uid://b3xpi46ifkdmv" path="res://img/clown_body.png" id="1_7exto"]
+[ext_resource type="Texture2D" uid="uid://bx411msbxtd8a" path="res://img/clown_hair.png" id="1_wg2xk"]
 [ext_resource type="Texture2D" uid="uid://dxrobkl0vebjb" path="res://img/clown_face.png" id="2_j1u7x"]
 
 [sub_resource type="Animation" id="Animation_4dwer"]
@@ -12,6 +13,18 @@ tracks/0/path = NodePath("../Face:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -34,6 +47,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
 [sub_resource type="Animation" id="Animation_qpg54"]
 resource_name = "neutral_loop"
@@ -50,6 +75,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [8, 9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_t64k6"]
@@ -68,6 +105,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [10, 11]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
 
 [sub_resource type="Animation" id="Animation_mbfkc"]
 resource_name = "scared_loop"
@@ -80,6 +129,18 @@ tracks/0/path = NodePath("../Face:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -102,6 +163,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [4, 5]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.00951767, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_a4jwf"]
 resource_name = "smile_loop"
@@ -114,6 +187,18 @@ tracks/0/path = NodePath("../Face:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hair:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -133,12 +218,18 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Hair" type="Sprite2D" parent="."]
+position = Vector2(574, 355)
+texture = ExtResource("1_wg2xk")
+hframes = 2
+vframes = 4
+
 [node name="Body" type="Sprite2D" parent="."]
 position = Vector2(575, 633)
 texture = ExtResource("1_7exto")
 
 [node name="Face" type="Sprite2D" parent="."]
-position = Vector2(567, 641)
+position = Vector2(568, 475)
 texture = ExtResource("2_j1u7x")
 hframes = 2
 vframes = 6
