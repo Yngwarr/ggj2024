@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://becu2dqld5voq"]
+
+[ext_resource type="Texture2D" uid="uid://dsd33qk04gcqa" path="res://img/particle/ps_1.png" id="1_snw3v"]
+[ext_resource type="Texture2D" uid="uid://cg81orrvq0xxq" path="res://img/particle/ps_3.png" id="2_jfhmt"]
+[ext_resource type="Texture2D" uid="uid://b11g0gwyhw87p" path="res://img/particle/ps_2.png" id="2_u6g36"]
+
+[sub_resource type="Gradient" id="Gradient_ctqa4"]
+colors = PackedColorArray(0.843137, 0, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_20lhc"]
+gradient = SubResource("Gradient_ctqa4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6er03"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 60.0
+angle_max = 90.0
+initial_velocity_max = 20.0
+angular_velocity_min = 5.0
+angular_velocity_max = 15.0
+radial_velocity_max = 10.0
+radial_accel_max = 15.0
+scale_max = 1.2
+color_ramp = SubResource("GradientTexture1D_20lhc")
+hue_variation_min = -0.2
+hue_variation_max = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dbvqt"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 60.0
+angle_max = 90.0
+initial_velocity_max = 20.0
+angular_velocity_min = 5.0
+angular_velocity_max = 10.0
+radial_velocity_max = 10.0
+radial_accel_max = 15.0
+scale_min = 0.5
+color = Color(1, 1, 0.337255, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3bp7b"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 60.0
+angle_max = 90.0
+direction = Vector3(10, 0, 0)
+initial_velocity_max = 20.0
+radial_velocity_max = 10.0
+scale_min = 0.8
+
+[node name="Particles" type="Node2D"]
+
+[node name="SuperStar" type="GPUParticles2D" parent="."]
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_6er03")
+texture = ExtResource("1_snw3v")
+lifetime = 2.0
+speed_scale = 3.0
+explosiveness = 0.2
+
+[node name="ComboStars" type="GPUParticles2D" parent="."]
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_dbvqt")
+texture = ExtResource("1_snw3v")
+lifetime = 2.0
+speed_scale = 3.0
+explosiveness = 0.2
+
+[node name="Stars" type="GPUParticles2D" parent="."]
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_3bp7b")
+texture = ExtResource("2_jfhmt")
+lifetime = 2.0
+speed_scale = 3.0
+
+[node name="Circles" type="GPUParticles2D" parent="."]
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_3bp7b")
+texture = ExtResource("2_u6g36")
