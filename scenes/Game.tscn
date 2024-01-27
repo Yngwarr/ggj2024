@@ -1,16 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=22 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="PackedScene" uid="uid://burxcmip5dg8l" path="res://scenes/Progress.tscn" id="2_mm0vn"]
 [ext_resource type="Script" path="res://src/UI/PauseMenu.gd" id="2_xdcds"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="3_j5m3f"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_tg1ur"]
+[ext_resource type="Texture2D" uid="uid://bvpa7dh4jdjvd" path="res://img/regular_bg.png" id="4_bxpbj"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="5_k0seo"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="6_2c0ui"]
 [ext_resource type="Texture2D" uid="uid://bmetb0g61y3bv" path="res://icon.svg" id="8_lyls7"]
 [ext_resource type="PackedScene" uid="uid://vcrchvmfujot" path="res://scenes/Hand.tscn" id="8_ocxmb"]
+[ext_resource type="Texture2D" uid="uid://b03kq5nntwaf4" path="res://img/clown_bg.png" id="9_euh0j"]
 [ext_resource type="PackedScene" uid="uid://e6mmeahx7whx" path="res://scenes/CharacterBody.tscn" id="10_ffd2t"]
 [ext_resource type="PackedScene" uid="uid://dxkfdovksh2kd" path="res://scenes/BallDispenser.tscn" id="10_m8o5d"]
+[ext_resource type="Script" path="res://src/Background.gd" id="10_r5va7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v63bu"]
 shader = ExtResource("3_tg1ur")
@@ -41,6 +44,16 @@ distance = -1152.0
 script = ExtResource("1_wmfvw")
 pause_screen = NodePath("PauseMenu")
 crowd_progress = NodePath("HUD/CrowdProgress")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(576, 432)
+texture = ExtResource("9_euh0j")
+script = ExtResource("10_r5va7")
+clown_bg = ExtResource("9_euh0j")
+regular_bg = ExtResource("4_bxpbj")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 layer = -1

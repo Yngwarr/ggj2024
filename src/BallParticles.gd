@@ -9,6 +9,6 @@ const SUPER_THRESHOLD = 4
 func set_combo(level: int) -> void:
 	var super_level := level > SUPER_THRESHOLD
 	super_stars.visible = super_level
-	combo_stars.visible = level < 2
+	combo_stars.visible = level >= 2
 	combo_stars.amount = level if super_level else level * 2
 	super_stars.amount = (level - SUPER_THRESHOLD + 1) * 2
