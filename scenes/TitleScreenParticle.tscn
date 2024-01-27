@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://r5haufygrkx3"]
+
+[ext_resource type="Texture2D" uid="uid://5xlicrwohe8i" path="res://img/particle/ps_ball.png" id="1_nq0tg"]
+
+[sub_resource type="Gradient" id="Gradient_dpm0s"]
+offsets = PackedFloat32Array(0.56917, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.823529)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p23cr"]
+gradient = SubResource("Gradient_dpm0s")
+
+[sub_resource type="Curve" id="Curve_i31da"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.481132), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ddslg"]
+curve = SubResource("Curve_i31da")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u0tjs"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4, 0, 1)
+emission_shape = 1
+emission_sphere_radius = 25.0
+radial_velocity_min = -20.0
+radial_velocity_max = 180.0
+gravity = Vector3(0, 100, 0)
+scale_curve = SubResource("CurveTexture_ddslg")
+color = Color(1, 0, 1, 1)
+color_ramp = SubResource("GradientTexture1D_p23cr")
+hue_variation_max = 1.0
+
+[node name="Balls" type="GPUParticles2D"]
+position = Vector2(567, -103)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_u0tjs")
+texture = ExtResource("1_nq0tg")
+lifetime = 5.0
