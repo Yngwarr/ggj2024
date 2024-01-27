@@ -16,9 +16,30 @@ enum ClownSkin { CLOWN, REGULAR }
 @onready var body: Sprite2D = $Body
 @onready var hair: Sprite2D = $Hair
 @onready var face: Sprite2D = $Face
+@onready var anim: AnimationPlayer = $AnimationPlayer
+
+var default_animation := &"smile_loop"
 
 func _ready() -> void:
+	anim.play(&"smile_loop")
 	set_skin(ClownSkin.REGULAR if Global.coulrophobia_mode else ClownSkin.CLOWN)
+
+func become_sad() -> void:
+	anim.play(&"sad_loop")
+	anim.queue(default_animation)
+
+func become_happy(current_level: int) -> void:
+	if current_level < 3:
+		return
+
+	anim.play(&"happy_loop")
+	anim.queue(default_animation)
+
+func concentrate(balls_in_air) -> void:
+	if balls_in_air < 3:
+		return
+
+	default_animation = &"neutral_loop"
 
 func set_skin(skin: ClownSkin) -> void:
 	match skin:

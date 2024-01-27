@@ -1,6 +1,10 @@
 class_name BallDispenser
 extends Node2D
 
+signal ball_dropped
+signal ball_spawned(current_amount: int)
+signal level_up(current_level: int)
+
 # the limit is 16
 # const MAX_BALLS = 4
 const MAX_BALLS = 8
@@ -37,6 +41,7 @@ func ball_fell(ball: Node2D) -> void:
 	free_layers = set_bit(free_layers, layer - 1, true)
 	ball.queue_free()
 	balls_in_air -= 1
+	ball_dropped.emit()
 
 func spawn_ball() -> void:
 	if balls_in_air == current_level:
@@ -60,6 +65,7 @@ func spawn_ball() -> void:
 	ball.combo_reset.connect(combo_reset)
 	ball.set_color(colors.pick_random())
 	balls_in_air += 1
+	ball_spawned.emit(balls_in_air)
 
 func get_free_layer(layers: int, max_balls: int) -> int:
 	var layer: int = 0
@@ -93,7 +99,7 @@ func combo_reset() -> void:
 func next_level() -> void:
 	current_level += 1
 	spawn_ball()
-	print("level up! ", current_level)
+	level_up.emit(current_level)
 
 func test_get_free_layer() -> void:
 	Test.are_eq(get_free_layer(0b1111_1111_1111_1111, 16), 1)
