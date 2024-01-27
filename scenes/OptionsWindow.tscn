@@ -1,28 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp02anwflcyv8"]
+[gd_scene load_steps=3 format=3 uid="uid://dp02anwflcyv8"]
 
 [ext_resource type="Script" path="res://src/UI/OptionsWindow.gd" id="1_08yxq"]
+[ext_resource type="Script" path="res://src/PhobiaBox.gd" id="2_noal5"]
 
 [node name="OptionsWindow" type="PopupPanel" node_paths=PackedStringArray("container")]
 title = "Options"
-position = Vector2i(402, 135)
-size = Vector2i(193, 124)
+position = Vector2i(347, 135)
+size = Vector2i(248, 124)
 visible = true
 borderless = false
 content_scale_mode = 1
 script = ExtResource("1_08yxq")
-container = NodePath("SoundLevels/Container")
+container = NodePath("VBoxContainer/SoundLevels/Container")
 
-[node name="SoundLevels" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 189.0
+offset_right = 244.0
 offset_bottom = 120.0
 
-[node name="Header" type="Label" parent="SoundLevels"]
+[node name="SoundLevels" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="VBoxContainer/SoundLevels"]
 layout_mode = 2
 text = "Sound Levels"
 horizontal_alignment = 1
 
-[node name="Container" type="GridContainer" parent="SoundLevels"]
+[node name="Container" type="GridContainer" parent="VBoxContainer/SoundLevels"]
 layout_mode = 2
 columns = 2
+
+[node name="Gameplay" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Gameplay Options"
+horizontal_alignment = 1
+
+[node name="PhobiaBox" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Coulrophobia Mode "
+script = ExtResource("2_noal5")

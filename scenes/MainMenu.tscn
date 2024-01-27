@@ -9,9 +9,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_8bkd4"]
 font_size = 52
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("first_to_focus")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("first_to_focus", "phobia_toggles")]
 script = ExtResource("1_62wd7")
 first_to_focus = NodePath("Menu/Menu/Start")
+phobia_toggles = [NodePath("OptionsWindow/VBoxContainer/PhobiaBox")]
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
@@ -95,3 +96,5 @@ Special thanks to all my homies!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[editable path="OptionsWindow"]
