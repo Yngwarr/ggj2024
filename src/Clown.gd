@@ -25,15 +25,23 @@ func _ready() -> void:
 	set_skin(ClownSkin.REGULAR if Global.coulrophobia_mode else ClownSkin.CLOWN)
 
 func become_sad() -> void:
+	if Global.game_over:
+		return
 	anim.play(&"sad_loop")
 	anim.queue(default_animation)
 
-func become_happy(current_level: int) -> void:
-	if current_level < 3:
-		return
-
+func become_happy(_current_level: int) -> void:
 	anim.play(&"happy_loop")
 	anim.queue(default_animation)
+
+func victory() -> void:
+	anim.play(&"happy_loop")
+	anim.queue(&"happy_loop")
+	anim.queue(&"happy_loop")
+	anim.queue(&"happy_loop")
+
+func failure() -> void:
+	anim.play(&"scared_loop")
 
 func concentrate(balls_in_air) -> void:
 	if balls_in_air < 3:
@@ -51,3 +59,4 @@ func set_skin(skin: ClownSkin) -> void:
 			body.texture = regular_body
 			hair.texture = regular_hair
 			face.texture = regular_face
+

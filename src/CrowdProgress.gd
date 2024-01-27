@@ -10,6 +10,9 @@ extends Control
 @onready var emoji: Emoji = $Emoji
 
 func set_value(value) -> void:
+	if Global.game_over:
+		return
+
 	var mood: Emoji.Mood = Emoji.Mood.ANGRY
 	var color := angry_color
 
