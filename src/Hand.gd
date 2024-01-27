@@ -32,9 +32,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	input = get_mouse_input() if right else get_keyboard_input()
 
-	if name == "RightHand":
-		print("velocity ", velocity)
-
 	var collision := move_and_collide(input * INPUT_MULT)
 	if collision:
 		# velocity = velocity.slide(collision.get_normal())

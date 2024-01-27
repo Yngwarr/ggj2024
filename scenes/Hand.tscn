@@ -7,7 +7,6 @@
 collision_mask = 65283
 motion_mode = 1
 script = ExtResource("1_1by5j")
-right = null
 
 [node name="View" type="Sprite2D" parent="."]
 position = Vector2(-76, -44.8)
