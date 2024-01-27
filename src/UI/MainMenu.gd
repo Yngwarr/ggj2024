@@ -9,7 +9,13 @@ signal config_loaded
 @export var first_to_focus: Control
 @export var phobia_toggles: Array[PhobiaBox]
 
+@export var balls: GPUParticles2D
+@export var header: AnimationPlayer
+
 func _ready() -> void:
+	balls.emitting = true
+	header.play(&"Header")
+
 	for toggle in phobia_toggles:
 		config_loaded.connect(toggle.load)
 	ConfigCtl.load_config()

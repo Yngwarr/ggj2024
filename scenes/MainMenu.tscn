@@ -3,19 +3,22 @@
 [ext_resource type="Script" path="res://src/UI/MainMenu.gd" id="1_62wd7"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="2_5fb6k"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="2_eahdg"]
-[ext_resource type="PackedScene" uid="uid://r5haufygrkx3" path="res://scenes/TitleScreenParticle.tscn" id="2_tf6i7"]
+[ext_resource type="PackedScene" path="res://scenes/TitleScreenParticle.tscn" id="2_tf6i7"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="3_pto1d"]
 [ext_resource type="PackedScene" uid="uid://cjhwc05n0b81a" path="res://scenes/Header.tscn" id="3_wxvo0"]
 [ext_resource type="Script" path="res://src/UI/QuitButton.gd" id="4_kgmp6"]
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("first_to_focus", "phobia_toggles")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("first_to_focus", "phobia_toggles", "balls", "header")]
 script = ExtResource("1_62wd7")
 first_to_focus = NodePath("Menu/Menu/Start")
 phobia_toggles = [NodePath("OptionsWindow/VBoxContainer/PhobiaBox")]
+balls = NodePath("Menu/Balls")
+header = NodePath("Menu/Header/AnimationPlayer")
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
 [node name="Balls" parent="Menu" instance=ExtResource("2_tf6i7")]
+emitting = false
 
 [node name="Header" parent="Menu" instance=ExtResource("3_wxvo0")]
 
@@ -90,4 +93,5 @@ Special thanks to all my homies!"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
+[editable path="Menu/Header"]
 [editable path="OptionsWindow"]
