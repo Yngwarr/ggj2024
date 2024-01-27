@@ -7,6 +7,8 @@ const CONFIG_FILE: StringName = "user://config.ini"
 
 ## Sound section name.
 const SOUND_VOLUME: StringName = "SoundVolume"
+const GAMEPLAY_SECTION := &"Gameplay"
+const COULROPHOBIA := &"Coulrophobia"
 
 ## Loads a global config file and sets values described there.
 static func load_config() -> void:
@@ -27,6 +29,9 @@ static func load_config() -> void:
 		SoundCtl.set_volume(bus,\
 				clamp(value, SoundCtl.MIN_VOLUME, SoundCtl.MAX_VOLUME))
 
+	Global.coulrophobia_mode = config.get_value(GAMEPLAY_SECTION, COULROPHOBIA, false)
+	print("config loaded ", Global.coulrophobia_mode)
+
 ## Actualizes values and stores them in the global config file. Opens a file if
 ## [code]config[/code] not provided.
 static func update_config(config: ConfigFile = null) -> void:
@@ -39,5 +44,8 @@ static func update_config(config: ConfigFile = null) -> void:
 		config.set_value(SOUND_VOLUME,\
 			AudioServer.get_bus_name(bus),\
 			AudioServer.get_bus_volume_db(bus))
+
+	print("saving ", Global.coulrophobia_mode)
+	config.set_value(GAMEPLAY_SECTION, COULROPHOBIA, Global.coulrophobia_mode)
 
 	config.save(CONFIG_FILE)
