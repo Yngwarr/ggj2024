@@ -2,7 +2,8 @@ class_name BallDispenser
 extends Node2D
 
 # the limit is 16
-const MAX_BALLS = 4
+# const MAX_BALLS = 4
+const MAX_BALLS = 1
 
 @export var spawn_points: Array[Marker2D]
 @export var ball_scene: PackedScene
@@ -35,7 +36,7 @@ func ball_fell(ball: Node2D) -> void:
 	ball.queue_free()
 
 func spawn_ball() -> void:
-	var layer := get_free_layer(free_layers)
+	var layer := get_free_layer(free_layers, MAX_BALLS)
 
 	if layer == -1:
 		return
@@ -49,11 +50,11 @@ func spawn_ball() -> void:
 	add_child(ball)
 	ball.set_color(colors.pick_random())
 
-func get_free_layer(layers: int) -> int:
+func get_free_layer(layers: int, max_balls: int) -> int:
 	var layer: int = 0
 	var is_free: int = 0
 
-	for i in range(MAX_BALLS):
+	for i in range(max_balls):
 		layer = i
 		is_free = layers & 1 == 1
 		if is_free:
@@ -72,10 +73,11 @@ func set_bit(data: int, pos: int, value: bool) -> int:
 	return data | (1 << pos) if value else data & ~(1 << pos)
 
 func test_get_free_layer() -> void:
-	Test.are_eq(get_free_layer(0b1111_1111_1111_1111), 1)
-	Test.are_eq(get_free_layer(0b1111_1111_1111_1000), 4)
-	Test.are_eq(get_free_layer(0b0000_0010_0000_0000), 10)
-	Test.are_eq(get_free_layer(0b0000_0000_0000_0000), -1)
+	Test.are_eq(get_free_layer(0b1111_1111_1111_1111, 16), 1)
+	Test.are_eq(get_free_layer(0b1111_1111_1111_1000, 16), 4)
+	Test.are_eq(get_free_layer(0b0000_0010_0000_0000, 16), 10)
+	Test.are_eq(get_free_layer(0b0000_0000_0000_0000, 16), -1)
+	Test.are_eq(get_free_layer(0b0000_0010_0000_0000, 5), -1)
 
 func test_set_bit() -> void:
 	Test.are_eq(set_bit(0b1111, 2, false), 0b1011)

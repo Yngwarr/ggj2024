@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://vcrchvmfujot"]
+[gd_scene load_steps=4 format=3 uid="uid://vcrchvmfujot"]
 
 [ext_resource type="Script" path="res://src/Hand.gd" id="1_1by5j"]
 [ext_resource type="Texture2D" uid="uid://c8q8xn67q0nnl" path="res://img/hand.png" id="2_2h120"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywexr"]
+radius = 112.04
 
 [node name="Hand" type="CharacterBody2D"]
 collision_mask = 65283
@@ -18,3 +21,11 @@ position = Vector2(-76, -44.8)
 rotation = -3.14159
 scale = Vector2(1, -1)
 polygon = PackedVector2Array(102, -7.19975, 92.9999, 25.8002, 35.9999, 52.8001, -53.0002, 66.7999, -83.2, 77, -103, 54.7997, -101.6, 28, -72, 6.79982, -39, -2.2001, -24.9999, -21.2001, 9.00003, -11.2, 66, -8.19984, 90.0001, -20.1998)
+
+[node name="BallDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 65280
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallDetector"]
+position = Vector2(-68, -98)
+shape = SubResource("CircleShape2D_ywexr")

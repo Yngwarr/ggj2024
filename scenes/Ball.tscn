@@ -56,10 +56,13 @@ linear_damp = 0.5
 script = ExtResource("1_2u6bb")
 
 [node name="View" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 1, 1)
 texture = ExtResource("1_fx65q")
 hframes = 3
 
-[node name="Flare" type="Sprite2D" parent="."]
+[node name="Flare" type="Node2D" parent="."]
+
+[node name="View" type="Sprite2D" parent="Flare"]
 position = Vector2(-17, -14)
 texture = ExtResource("2_imjxx")
 

@@ -14,22 +14,30 @@ var input_up := &"game_lu"
 var input_down := &"game_ld"
 var input_bounce := &"game_lbounce"
 
+@onready var ball_detector: Area2D = $BallDetector
+
+func setup_right() -> void:
+	input_left = &"game_rl"
+	input_right = &"game_rr"
+	input_up = &"game_ru"
+	input_down = &"game_rd"
+	input_bounce = &"game_rbounce"
+
+	$View.scale.x *= -1
+	$Collider.scale.x *= -1
+	$View.position.x *= -1
+	$Collider.position.x *= -1
+
+	bounce_rotation *= -1
+
+
 func _ready() -> void:
 	if right:
-		input_left = &"game_rl"
-		input_right = &"game_rr"
-		input_up = &"game_ru"
-		input_down = &"game_rd"
-		input_bounce = &"game_rbounce"
+		setup_right()
 
-		$View.scale.x *= -1
-		$Collider.scale.x *= -1
-		$View.position.x *= -1
-		$Collider.position.x *= -1
+	ball_detector.body_exited.connect(ball_left)
 
-		bounce_rotation *= -1
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	input = get_mouse_input() if right else get_keyboard_input()
 
 	var collision := move_and_collide(input * INPUT_MULT)
@@ -50,6 +58,12 @@ func _physics_process(delta: float) -> void:
 			.tween_property(self, "rotation_degrees", 0, .3) \
 			.set_trans(Tween.TRANS_CUBIC) \
 			.set_ease(Tween.EASE_OUT)
+
+func ball_left(ball: Node2D) -> void:
+	if not ball.is_in_group(&"ball"):
+		return
+
+	ball.touched_by(self)
 
 func get_keyboard_input() -> Vector2:
 	return Vector2(
