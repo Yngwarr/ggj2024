@@ -1,8 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=27 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
+[ext_resource type="AudioStream" uid="uid://bcneake576gc8" path="res://sfx/cheer.ogg" id="2_0pw44"]
 [ext_resource type="PackedScene" uid="uid://burxcmip5dg8l" path="res://scenes/Progress.tscn" id="2_mm0vn"]
 [ext_resource type="Script" path="res://src/UI/PauseMenu.gd" id="2_xdcds"]
+[ext_resource type="AudioStream" uid="uid://br25lhgqgtgfy" path="res://sfx/boo.mp3" id="3_0bw4c"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="3_j5m3f"]
 [ext_resource type="Shader" path="res://shaders/blur.gdshader" id="3_tg1ur"]
 [ext_resource type="Texture2D" uid="uid://bvpa7dh4jdjvd" path="res://img/regular_bg.png" id="4_bxpbj"]
@@ -15,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dxkfdovksh2kd" path="res://scenes/BallDispenser.tscn" id="10_m8o5d"]
 [ext_resource type="Script" path="res://src/Background.gd" id="10_r5va7"]
 [ext_resource type="PackedScene" uid="uid://kqwjh5ryuci0" path="res://scenes/ConfettiParticles.tscn" id="15_6vslw"]
+[ext_resource type="AudioStream" uid="uid://ctol802628hmq" path="res://sfx/theme.wav" id="18_03akg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v63bu"]
 shader = ExtResource("3_tg1ur")
@@ -51,6 +54,8 @@ crowd_progress = NodePath("HUD/CrowdProgress")
 victory_confetti = [NodePath("WinConfetti"), NodePath("WinConfetti2")]
 victory_screen = NodePath("VictoryScreen")
 failure_screen = NodePath("FailureScreen")
+victory_sound = ExtResource("2_0pw44")
+failure_sound = ExtResource("3_0bw4c")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -2
@@ -274,3 +279,12 @@ scale = Vector2(5, 5)
 [node name="WinConfetti2" parent="." instance=ExtResource("15_6vslw")]
 position = Vector2(948, 888)
 scale = Vector2(5, 5)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_03akg")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

@@ -41,7 +41,7 @@ texture_progress = ExtResource("2_sh8mw")
 texture_progress_offset = Vector2(0, -10)
 
 [node name="Emoji" type="Sprite2D" parent="."]
-position = Vector2(82, 171)
+position = Vector2(82, 542)
 texture = ExtResource("5_emefk")
 script = ExtResource("5_2obyo")
 happy = ExtResource("5_emefk")

@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbplqxkaqi83r"]
+[gd_scene load_steps=9 format=3 uid="uid://cbplqxkaqi83r"]
 
 [ext_resource type="Script" path="res://src/UI/MainMenu.gd" id="1_62wd7"]
-[ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="2_5fb6k"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="2_eahdg"]
-[ext_resource type="PackedScene" uid="uid://r5haufygrkx3" path="res://scenes/TitleScreenParticle.tscn" id="2_tf6i7"]
+[ext_resource type="PackedScene" path="res://scenes/TitleScreenParticle.tscn" id="2_tf6i7"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="3_pto1d"]
 [ext_resource type="PackedScene" uid="uid://cjhwc05n0b81a" path="res://scenes/Header.tscn" id="3_wxvo0"]
 [ext_resource type="Script" path="res://src/UI/QuitButton.gd" id="4_kgmp6"]
+[ext_resource type="Script" path="res://src/UI/PhobiaModeButton.gd" id="4_w1xxo"]
+[ext_resource type="AudioStream" uid="uid://ufnqtipomwtf" path="res://sfx/menu.wav" id="8_5r4vt"]
 
 [node name="MainMenu" type="Node2D" node_paths=PackedStringArray("first_to_focus", "phobia_toggles", "balls", "header")]
 script = ExtResource("1_62wd7")
@@ -38,9 +39,16 @@ grow_vertical = 0
 
 [node name="Start" type="Button" parent="Menu/Menu"]
 layout_mode = 2
-text = "Start"
-script = ExtResource("2_5fb6k")
+text = "Play"
+script = ExtResource("4_w1xxo")
 next_scene_name = "res://scenes/Game.tscn"
+
+[node name="StartPhobia" type="Button" parent="Menu/Menu"]
+layout_mode = 2
+text = "Play in coulrophobia mode"
+script = ExtResource("4_w1xxo")
+next_scene_name = "res://scenes/Game.tscn"
+phobia_mode = true
 
 [node name="Options" type="Button" parent="Menu/Menu" node_paths=PackedStringArray("popup")]
 layout_mode = 2
@@ -93,6 +101,12 @@ Special thanks to SESCG and MonteGames for organizing an offline event!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5r4vt")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
 
 [editable path="Menu/Header"]
 [editable path="OptionsWindow"]

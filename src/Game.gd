@@ -15,9 +15,12 @@ const FAILURE: int = -10
 @export var victory_confetti: Array[Confetti]
 @export var victory_screen: CanvasLayer
 @export var failure_screen: CanvasLayer
+@export var victory_sound: AudioStream
+@export var failure_sound: AudioStream
 
 @onready var clown: Clown = $Clown
 @onready var ball_dispenser: BallDispenser = $BallDispenser
+@onready var sound_player: AudioStreamPlayer = $GameOverSound
 
 var happiness: int = 0
 
@@ -55,8 +58,10 @@ func victory() -> void:
 	for c in victory_confetti:
 		c.emit()
 	clown.victory()
+	sound_player.stream = victory_sound
+	sound_player.play()
 
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
 
 	if not get_tree().paused:
 		get_tree().paused = true
@@ -65,8 +70,10 @@ func victory() -> void:
 func failure() -> void:
 	Global.game_over = true
 	clown.failure()
+	sound_player.stream = failure_sound
+	sound_player.play()
 
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(4).timeout
 
 	if not get_tree().paused:
 		get_tree().paused = true
