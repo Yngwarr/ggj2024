@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://src/UI/MainMenu.gd" id="1_62wd7"]
 [ext_resource type="Script" path="res://src/UI/ChangeSceneButton.gd" id="2_5fb6k"]
 [ext_resource type="PackedScene" uid="uid://dp02anwflcyv8" path="res://scenes/OptionsWindow.tscn" id="2_eahdg"]
-[ext_resource type="PackedScene" path="res://scenes/TitleScreenParticle.tscn" id="2_tf6i7"]
+[ext_resource type="PackedScene" uid="uid://r5haufygrkx3" path="res://scenes/TitleScreenParticle.tscn" id="2_tf6i7"]
 [ext_resource type="Script" path="res://src/UI/ShowPopupButton.gd" id="3_pto1d"]
 [ext_resource type="PackedScene" uid="uid://cjhwc05n0b81a" path="res://scenes/Header.tscn" id="3_wxvo0"]
 [ext_resource type="Script" path="res://src/UI/QuitButton.gd" id="4_kgmp6"]
@@ -18,7 +18,8 @@ header = NodePath("Menu/Header/AnimationPlayer")
 [node name="Menu" type="CanvasLayer" parent="."]
 
 [node name="Balls" parent="Menu" instance=ExtResource("2_tf6i7")]
-emitting = false
+position = Vector2(570, 15)
+amount = 16
 
 [node name="Header" parent="Menu" instance=ExtResource("3_wxvo0")]
 
