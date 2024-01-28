@@ -35,6 +35,7 @@ func touched_by(hand: Hand) -> void:
 	else:
 		reset_combo(touch)
 	last_touch = touch
+	hand.play_boink(combo)
 
 func inc_combo() -> void:
 	combo += 1

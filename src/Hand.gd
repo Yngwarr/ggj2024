@@ -4,9 +4,12 @@ extends CharacterBody2D
 const INPUT_MULT := 20.0
 
 @export var right := false
+@export var sounds: Array[AudioStream]
 
 var input: Vector2
 var bounce_rotation: float = 40
+
+@onready var sound_player: AudioStreamPlayer = $SoundPlayer
 
 var input_left := &"game_ll"
 var input_right := &"game_lr"
@@ -29,7 +32,6 @@ func setup_right() -> void:
 	$Collider.position.x *= -1
 
 	bounce_rotation *= -1
-
 
 func _ready() -> void:
 	if right:
@@ -78,3 +80,7 @@ func get_mouse_input() -> Vector2:
 		return Vector2.ZERO
 
 	return direction.normalized()
+
+func play_boink(combo: int) -> void:
+	sound_player.stream = sounds[clamp(combo, 0, len(sounds) - 1)]
+	sound_player.play()

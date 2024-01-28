@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://e6mmeahx7whx"]
+[gd_scene load_steps=18 format=3 uid="uid://e6mmeahx7whx"]
 
 [ext_resource type="Texture2D" uid="uid://b3xpi46ifkdmv" path="res://img/clown_body.png" id="1_7exto"]
 [ext_resource type="Script" path="res://src/Clown.gd" id="1_genee"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dxrobkl0vebjb" path="res://img/clown_face.png" id="2_j1u7x"]
 [ext_resource type="Texture2D" uid="uid://b4mpxtaskfdg3" path="res://img/regular_hair.png" id="6_88pna"]
 [ext_resource type="Texture2D" uid="uid://dh2b6m2gpf1lh" path="res://img/regular_face.png" id="7_wennm"]
+[ext_resource type="AudioStream" uid="uid://cki7jtqn2ojo8" path="res://sfx/happy.wav" id="8_ge8x1"]
+[ext_resource type="AudioStream" uid="uid://6wh4ef3ltboo" path="res://sfx/sad.wav" id="9_22xtr"]
 
 [sub_resource type="Animation" id="Animation_4dwer"]
 length = 0.001
@@ -62,6 +64,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [0, 1, 0, 1, 0, 1, 0, 1]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_ge8x1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_qpg54"]
 resource_name = "neutral_loop"
@@ -119,6 +136,21 @@ tracks/1/keys = {
 "update": 1,
 "values": [4, 5, 4, 5, 4, 5, 4, 5]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("9_22xtr")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_mbfkc"]
 resource_name = "scared_loop"
@@ -248,3 +280,5 @@ root_node = NodePath("../Body")
 libraries = {
 "": SubResource("AnimationLibrary_xbs4f")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

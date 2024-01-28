@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://vcrchvmfujot"]
+[gd_scene load_steps=9 format=3 uid="uid://vcrchvmfujot"]
 
 [ext_resource type="Script" path="res://src/Hand.gd" id="1_1by5j"]
 [ext_resource type="Texture2D" uid="uid://c8q8xn67q0nnl" path="res://img/hand.png" id="2_2h120"]
+[ext_resource type="AudioStream" uid="uid://d1p1fl0sctik4" path="res://sfx/boink-1.wav" id="2_t6uay"]
+[ext_resource type="AudioStream" uid="uid://resc4ywhac86" path="res://sfx/boink-2.wav" id="3_o71wo"]
+[ext_resource type="AudioStream" uid="uid://b00xl1ecxvspy" path="res://sfx/boink-3.wav" id="4_pqj0q"]
+[ext_resource type="AudioStream" uid="uid://v5yvwtk87p5h" path="res://sfx/boink-4.wav" id="5_o6f6e"]
+[ext_resource type="AudioStream" uid="uid://h42kufkkd83m" path="res://sfx/boink-5.wav" id="6_k4ajb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ywexr"]
 radius = 130.311
@@ -10,6 +15,7 @@ radius = 130.311
 collision_mask = 65283
 motion_mode = 1
 script = ExtResource("1_1by5j")
+sounds = Array[AudioStream]([ExtResource("2_t6uay"), ExtResource("3_o71wo"), ExtResource("4_pqj0q"), ExtResource("5_o6f6e"), ExtResource("6_k4ajb")])
 
 [node name="View" type="Sprite2D" parent="."]
 position = Vector2(-76, -44.8)
@@ -29,3 +35,8 @@ collision_mask = 65280
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BallDetector"]
 position = Vector2(-68, -98)
 shape = SubResource("CircleShape2D_ywexr")
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_t6uay")
+max_polyphony = 10
+bus = &"SFX"

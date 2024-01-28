@@ -190,22 +190,6 @@ text = "Quit to menu"
 script = ExtResource("6_2c0ui")
 next_scene_name = "res://scenes/MainMenu.tscn"
 
-[node name="OptionsWindow" parent="VictoryScreen" node_paths=PackedStringArray("container") instance=ExtResource("3_j5m3f")]
-position = Vector2i(490, 250)
-visible = false
-container = NodePath("../../PauseMenu/OptionsWindow/VBoxContainer/SoundLevels/Container")
-
-[node name="ConfirmQuit" type="ConfirmationDialog" parent="VictoryScreen"]
-title = ""
-position = Vector2i(426, 284)
-size = Vector2i(289, 105)
-unresizable = true
-popup_window = true
-ok_button_text = "Yes"
-dialog_text = "Do you want to quit to main menu?"
-dialog_autowrap = true
-cancel_button_text = "No"
-
 [node name="FailureScreen" type="CanvasLayer" parent="."]
 process_mode = 2
 visible = false
@@ -247,22 +231,6 @@ layout_mode = 2
 text = "Quit to menu"
 script = ExtResource("6_2c0ui")
 next_scene_name = "res://scenes/MainMenu.tscn"
-
-[node name="OptionsWindow" parent="FailureScreen" node_paths=PackedStringArray("container") instance=ExtResource("3_j5m3f")]
-position = Vector2i(490, 250)
-visible = false
-container = NodePath("../../PauseMenu/OptionsWindow/VBoxContainer/SoundLevels/Container")
-
-[node name="ConfirmQuit" type="ConfirmationDialog" parent="FailureScreen"]
-title = ""
-position = Vector2i(426, 284)
-size = Vector2i(289, 120)
-unresizable = true
-popup_window = true
-ok_button_text = "Yes"
-dialog_text = "Do you want to quit to main menu?"
-dialog_autowrap = true
-cancel_button_text = "No"
 
 [node name="Clown" parent="." instance=ExtResource("10_ffd2t")]
 

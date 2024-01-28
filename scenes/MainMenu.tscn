@@ -76,7 +76,7 @@ offset_top = 4.0
 offset_right = 361.0
 offset_bottom = 321.0
 bbcode_enabled = true
-text = "[center][b]Epic Megagame[/b][/center]
+text = "[center][b]Juggle for us![/b][/center]
 
 Brought to you by:
 [ul]
@@ -86,10 +86,10 @@ Brought to you by:
 
 With use of these 3rd party assets:
 [ul]
-[b]White square[/b] by squaresausage [i](via [url=https://hardweird.net]his personal site[/url])[/i].
+[b]Font Virgil[/b] by Ellinor Rapp [i](via [url=https://github.com/excalidraw/virgil]github[/url])[/i].
 [/ul]
 
-Special thanks to all my homies!"
+Special thanks to SESCG and MonteGames for organizing an offline event!"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

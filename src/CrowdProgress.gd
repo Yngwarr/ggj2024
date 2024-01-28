@@ -16,7 +16,7 @@ func set_value(value) -> void:
 	var mood: Emoji.Mood = Emoji.Mood.ANGRY
 	var color := angry_color
 
-	if value >= 10:
+	if value >= 7:
 		mood = Emoji.Mood.HAPPY
 		color = happy_color
 	elif value >= 5:

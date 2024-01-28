@@ -4,7 +4,7 @@ extends Node2D
 ## where your dreams come true! Adjust to your likings and may the code be with
 ## you.
 
-const VICTORY: int = 17
+const VICTORY: int = 15
 const FAILURE: int = -10
 
 ## Must have [code]process_mode == PROCESS_MODE_WHEN_PAUSED[/code].
