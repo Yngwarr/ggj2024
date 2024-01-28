@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vcrchvmfujot"]
+[gd_scene load_steps=15 format=3 uid="uid://vcrchvmfujot"]
 
 [ext_resource type="Script" path="res://src/Hand.gd" id="1_1by5j"]
 [ext_resource type="Texture2D" uid="uid://c8q8xn67q0nnl" path="res://img/hand.png" id="2_2h120"]
@@ -7,9 +7,74 @@
 [ext_resource type="AudioStream" uid="uid://b00xl1ecxvspy" path="res://sfx/boink-3.wav" id="4_pqj0q"]
 [ext_resource type="AudioStream" uid="uid://v5yvwtk87p5h" path="res://sfx/boink-4.wav" id="5_o6f6e"]
 [ext_resource type="AudioStream" uid="uid://h42kufkkd83m" path="res://sfx/boink-5.wav" id="6_k4ajb"]
+[ext_resource type="Texture2D" uid="uid://btl0f0k83l01c" path="res://img/hint_left.png" id="8_nkojm"]
+[ext_resource type="Script" path="res://src/Hint.gd" id="8_sc2rv"]
+[ext_resource type="Texture2D" uid="uid://dnje5ukmclq6k" path="res://img/hint_right.png" id="9_440b8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ywexr"]
 radius = 130.311
+
+[sub_resource type="Animation" id="Animation_6lhey"]
+resource_name = "idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0124731, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_w8dc5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HintLeft:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HintRight:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_juof2"]
+_data = {
+"RESET": SubResource("Animation_w8dc5"),
+"idle": SubResource("Animation_6lhey")
+}
 
 [node name="Hand" type="CharacterBody2D"]
 collision_mask = 65283
@@ -40,3 +105,26 @@ shape = SubResource("CircleShape2D_ywexr")
 stream = ExtResource("2_t6uay")
 max_polyphony = 10
 bus = &"SFX"
+
+[node name="Hint" type="Node2D" parent="."]
+position = Vector2(-42, -173)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("8_sc2rv")
+
+[node name="HintLeft" type="Sprite2D" parent="Hint"]
+visible = false
+texture = ExtResource("8_nkojm")
+hframes = 2
+metadata/_edit_lock_ = true
+
+[node name="HintRight" type="Sprite2D" parent="Hint"]
+position = Vector2(0, 10)
+scale = Vector2(-1, 1)
+texture = ExtResource("9_440b8")
+hframes = 2
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hint"]
+libraries = {
+"": SubResource("AnimationLibrary_juof2")
+}

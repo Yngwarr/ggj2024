@@ -10,6 +10,7 @@ var input: Vector2
 var bounce_rotation: float = 40
 
 @onready var sound_player: AudioStreamPlayer = $SoundPlayer
+@onready var hint = $Hint
 
 var input_left := &"game_ll"
 var input_right := &"game_lr"
@@ -39,6 +40,8 @@ func _ready() -> void:
 
 	ball_detector.body_exited.connect(ball_left)
 
+	hint.show_hint(right)
+
 func _physics_process(_delta: float) -> void:
 	input = get_mouse_input() if right else get_keyboard_input()
 
@@ -52,6 +55,7 @@ func _physics_process(_delta: float) -> void:
 
 
 	if Input.is_action_just_pressed(input_bounce):
+		hint.hide_hint()
 		var tween := create_tween().set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self, "rotation_degrees", bounce_rotation, .3) \
 			.set_trans(Tween.TRANS_CUBIC) \

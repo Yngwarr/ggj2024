@@ -21,6 +21,7 @@ const FAILURE: int = -10
 @onready var clown: Clown = $Clown
 @onready var ball_dispenser: BallDispenser = $BallDispenser
 @onready var sound_player: AudioStreamPlayer = $GameOverSound
+@onready var music_player: AudioStreamPlayer = $Music
 
 var happiness: int = 0
 
@@ -58,6 +59,7 @@ func victory() -> void:
 	for c in victory_confetti:
 		c.emit()
 	clown.victory()
+	music_player.stop()
 	sound_player.stream = victory_sound
 	sound_player.play()
 
