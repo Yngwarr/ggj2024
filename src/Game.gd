@@ -8,7 +8,6 @@ const VICTORY: int = 15
 const FAILURE: int = -10
 
 ## Must have [code]process_mode == PROCESS_MODE_WHEN_PAUSED[/code].
-@export var pause_screen: CanvasLayer
 @export var crowd_progress: CrowdProgress
 
 @export_group("Game over")
@@ -47,12 +46,6 @@ func decrease_happiness() -> void:
 	crowd_progress.set_value(happiness)
 	if happiness <= FAILURE:
 		failure()
-
-func _process(_delta) -> void:
-	if Input.is_action_just_pressed("game_pause"):
-		if not get_tree().paused:
-			get_tree().paused = true
-			pause_screen.pause()
 
 func victory() -> void:
 	Global.game_over = true

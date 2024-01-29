@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://csahdmph2aji4"]
+[gd_scene load_steps=28 format=3 uid="uid://csahdmph2aji4"]
 
 [ext_resource type="Script" path="res://src/Game.gd" id="1_wmfvw"]
 [ext_resource type="AudioStream" uid="uid://bcneake576gc8" path="res://sfx/cheer.ogg" id="2_0pw44"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://src/Background.gd" id="10_r5va7"]
 [ext_resource type="PackedScene" uid="uid://kqwjh5ryuci0" path="res://scenes/ConfettiParticles.tscn" id="15_6vslw"]
 [ext_resource type="AudioStream" uid="uid://ctol802628hmq" path="res://sfx/theme.wav" id="18_03akg"]
+[ext_resource type="Script" path="res://src/Pause.gd" id="19_nmvsc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v63bu"]
 shader = ExtResource("3_tg1ur")
@@ -47,9 +48,8 @@ normal = Vector2(1, 0)
 normal = Vector2(-1, 0)
 distance = -1152.0
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("pause_screen", "crowd_progress", "victory_confetti", "victory_screen", "failure_screen")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("crowd_progress", "victory_confetti", "victory_screen", "failure_screen")]
 script = ExtResource("1_wmfvw")
-pause_screen = NodePath("PauseMenu")
 crowd_progress = NodePath("HUD/CrowdProgress")
 victory_confetti = [NodePath("WinConfetti"), NodePath("WinConfetti2")]
 victory_screen = NodePath("VictoryScreen")
@@ -288,3 +288,8 @@ bus = &"Music"
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
+
+[node name="Pause" type="Node" parent="." node_paths=PackedStringArray("pause_screen")]
+process_mode = 3
+script = ExtResource("19_nmvsc")
+pause_screen = NodePath("../PauseMenu")
