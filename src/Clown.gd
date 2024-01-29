@@ -35,10 +35,7 @@ func become_happy(_current_level: int) -> void:
 	anim.queue(default_animation)
 
 func victory() -> void:
-	anim.play(&"happy_loop")
-	anim.queue(&"happy_loop")
-	anim.queue(&"happy_loop")
-	anim.queue(&"happy_loop")
+	anim.play(&"victory")
 
 func failure() -> void:
 	anim.play(&"scared_loop")
