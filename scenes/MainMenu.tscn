@@ -73,31 +73,34 @@ visible = false
 
 [node name="CreditsWindow" type="PopupPanel" parent="."]
 title = "Credits"
-position = Vector2i(405, 184)
-size = Vector2i(365, 325)
+initial_position = 2
+size = Vector2i(525, 350)
 borderless = false
 content_scale_mode = 1
 
 [node name="CreditsLabel" type="RichTextLabel" parent="CreditsWindow"]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 361.0
-offset_bottom = 321.0
+offset_right = 521.0
+offset_bottom = 346.0
 bbcode_enabled = true
 text = "[center][b]Juggle for us![/b][/center]
 
 Brought to you by:
 [ul]
-[b]Yngvarr[/b] - code and game design.
-[b]Syudzius[/b] - art and also game design.
+[b]Yngvarr[/b] - code, music, some sounds and game design.
+[b]Syudzius[/b] - art, technical design and also game design.
 [/ul]
 
 With use of these 3rd party assets:
 [ul]
 [b]Font Virgil[/b] by Ellinor Rapp [i](via [url=https://github.com/excalidraw/virgil]github[/url])[/i].
+[b]Crowd Cheer.wav[/b] by deleted_user_2104797 [i](via [url=https://freesound.org/people/deleted_user_2104797/sounds/324892/]freesound[/url])[/i]
+[b]Boo! and hissing!.mp3[/b] by mrrap4food[i](via [url=https://freesound.org/people/mrrap4food/sounds/619031/]freesound[/url])[/i]
 [/ul]
 
-Special thanks to SESCG and MonteGames for organizing an offline event!"
+Special thanks to SESCG and MonteGames for organizing an offline event and to all the new friends we made on that event! You guys are amazing, thank you!
+"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
