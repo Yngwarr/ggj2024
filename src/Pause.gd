@@ -4,6 +4,8 @@ extends Node
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("game_pause"):
-		if not get_tree().paused:
+		if get_tree().paused:
+			pause_screen.unpause()
+		else:
 			get_tree().paused = true
 			pause_screen.pause()
