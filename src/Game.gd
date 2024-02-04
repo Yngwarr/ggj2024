@@ -25,6 +25,8 @@ const FAILURE: int = -10
 var happiness: int = 0
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+
 	Global.game_over = false
 	ball_dispenser.ball_dropped.connect(clown.become_sad)
 	ball_dispenser.ball_spawned.connect(clown.concentrate)

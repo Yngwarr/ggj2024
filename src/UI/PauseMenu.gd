@@ -16,9 +16,11 @@ func options_toggled() -> void:
 	if options_menu.visible: return
 
 func pause() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	show()
 	resume_button.grab_focus()
 
 func unpause() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	hide()
 	get_tree().paused = false
